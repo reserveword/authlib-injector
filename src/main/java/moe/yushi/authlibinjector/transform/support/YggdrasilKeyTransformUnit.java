@@ -48,6 +48,8 @@ import moe.yushi.authlibinjector.transform.CallbackMethod;
 import moe.yushi.authlibinjector.transform.CallbackSupport;
 import moe.yushi.authlibinjector.transform.TransformUnit;
 
+import java.lang.Exception;
+
 public class YggdrasilKeyTransformUnit implements TransformUnit {
 
 	private static final List<PublicKey> PUBLIC_KEYS = new CopyOnWriteArrayList<>();
@@ -117,6 +119,7 @@ public class YggdrasilKeyTransformUnit implements TransformUnit {
 					return new MethodVisitor(ASM7, super.visitMethod(access, name, desc, signature, exceptions)) {
 						@Override
 						public void visitMethodInsn(int opcode, String owner, String name, String descriptor, boolean isInterface) {
+							try{
 							if (opcode == INVOKEVIRTUAL
 									&& "com/mojang/authlib/properties/Property".equals(owner)
 									&& "isSignatureValid".equals(name)
@@ -130,6 +133,7 @@ public class YggdrasilKeyTransformUnit implements TransformUnit {
 							} else {
 								super.visitMethodInsn(opcode, owner, name, descriptor, isInterface);
 							}
+							}catch(Exception e){}
 						}
 					};
 				}
