@@ -1,4 +1,6 @@
- * [English](https://github.com/yushijinhun/authlib-injector/blob/develop/README.en.md)
+#### 本人尝试修复一个神秘bug，有相当大风险，使用需谨慎
+
+* [English](https://github.com/yushijinhun/authlib-injector/blob/develop/README.en.md)
  * **简体中文(Chinese Simplified)**
 
 # authlib-injector
